@@ -1,13 +1,34 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import App from './App'
-import Home from './pages/Home'
-import Introduction from './pages/Introduction'
-import Contract from './pages/Contract'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import App from "./App";
+import Home from "./pages/Home";
+import Introduction from "./pages/Introduction";
+import Contract from "./pages/Contract";
+import "./styles/main.css";
+
+
+function Navigation() {
+  return (
+    <nav style={{ marginBottom: "20px" }}>
+      <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
+      <Link to="/introduction" style={{ marginRight: "10px" }}>Introduction</Link>
+      <Link to="/contract">Contract</Link>
+    </nav>
+  );
+}
+
+function Root() {
+  return (
+    <div>
+      <Navigation />
+      <Outlet />  {/* This will render the nested page components */}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
@@ -19,4 +40,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
-)
+);

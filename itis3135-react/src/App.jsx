@@ -1,17 +1,15 @@
-import Header from './Header'
-import './App.css'
+import { Outlet } from "react-router-dom";
+import Header from "./Header"; 
 
 function App() {
   return (
     <div>
-      <Header />
+      <Header /> 
       <main>
-         <Outlet />
-        <h1>Welcome to My ITIS 3135 React Site</h1>
-        <p>This will become your home page.</p>
+        <Outlet /> 
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
