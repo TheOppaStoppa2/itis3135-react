@@ -1,43 +1,38 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App.jsx';
+import HomePage from './pages/Home.jsx';
+import IntroductionPage from './pages/Introduction.jsx';
+import ContractPage from './pages/Contract.jsx';
 
-import App from "./App";
-import Home from "./pages/Home";
-import Introduction from "./pages/Introduction";
-import Contract from "./pages/Contract";
-import "./styles/main.css";
+// Define the routes for the application
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />, // App serves as the overall layout wrapper (Header/Footer stay constant)
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: 'introduction',
+        element: <IntroductionPage />,
+      },
+      {
+        path: 'contract',
+        element: <ContractPage />,
+      },
+    ],
+  },
+], {
+  // FIX: Sets the base path for deployment in a subfolder (e.g., GitHub Pages)
+  basename: '/skumar51/itis3135/itis3135-react/'
+});
 
-
-function Navigation() {
-  return (
-    <nav style={{ marginBottom: "20px" }}>
-      <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
-      <Link to="/introduction" style={{ marginRight: "10px" }}>Introduction</Link>
-      <Link to="/contract">Contract</Link>
-    </nav>
-  );
-}
-
-function Root() {
-  return (
-    <div>
-      <Navigation />
-      <Outlet />  {/* This will render the nested page components */}
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
-          <Route path="introduction" element={<Introduction />} />
-          <Route path="contract" element={<Contract />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
