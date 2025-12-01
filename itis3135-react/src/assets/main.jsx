@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
-import HomePage from './pages/Home.jsx';
-import IntroductionPage from './pages/Introduction.jsx';
-import ContractPage from './pages/Contract.jsx';
+import HomePage from './Home.jsx';
+import IntroductionPage from './Introduction.jsx';
+import ContractPage from './Contract.jsx';
 
 // Define the routes for the application
 const router = createBrowserRouter([
